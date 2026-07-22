@@ -1,0 +1,17 @@
+name: Continuous Deployment - Production
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy to Production Cloud
+        run: |
+          echo "Starting prod environment deployment..."
+          chmod +x scripts/deploy-prod.sh
+          ./scripts/deploy-prod.sh

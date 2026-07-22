@@ -1,0 +1,85 @@
+erDiagram
+    ORGANIZATIONS {
+        uuid id PK
+        varchar name
+        varchar slug UK
+        varchar plan_tier
+        jsonb settings
+        boolean is_active
+        timestamp created_at
+        timestamp deleted_at
+    }
+
+    USERS {
+        uuid id PK
+        uuid organization_id FK
+        varchar email UK
+        varchar first_name
+        varchar role
+        timestamp deleted_at
+    }
+
+    AUTH_CREDENTIALS {
+        uuid id PK
+        uuid user_id FK
+        varchar password_hash
+        boolean two_factor_enabled
+    }
+
+    ASSETS {
+        uuid id PK
+        uuid organization_id FK
+        varchar asset_code
+        varchar name
+        varchar category
+        decimal health_score
+    }
+
+    DOCUMENTS {
+        uuid id PK
+        uuid organization_id FK
+        uuid asset_id FK
+        varchar title
+        varchar document_type
+    }
+
+    EMBEDDINGS {
+        uuid id PK
+        uuid organization_id FK
+        uuid document_id FK
+        text chunk_content
+        vector embedding "pgvector(1536)"
+    }
+
+    MAINTENANCE_RECORDS {
+        uuid id PK
+        uuid asset_id FK
+        uuid technician_id FK
+        varchar maintenance_type
+        text findings
+        timestamp date
+    }
+
+    AUDIT_LOGS {
+        uuid id PK
+        uuid organization_id FK
+        uuid user_id FK
+        varchar action
+        jsonb payload
+        timestamp created_at
+    }
+
+    ORGANIZATIONS ||--o{ USERS : "has many"
+    ORGANIZATIONS ||--o{ ASSETS : "owns"
+    ORGANIZATIONS ||--o{ DOCUMENTS : "owns"
+    ORGANIZATIONS ||--o{ EMBEDDINGS : "isolates"
+    ORGANIZATIONS ||--o{ AUDIT_LOGS : "records"
+
+    USERS ||--o| AUTH_CREDENTIALS : "has one"
+    USERS ||--o{ MAINTENANCE_RECORDS : "performs"
+    USERS ||--o{ AUDIT_LOGS : "triggers"
+
+    ASSETS ||--o{ DOCUMENTS : "is referenced by"
+    ASSETS ||--o{ MAINTENANCE_RECORDS : "undergoes"
+
+    DOCUMENTS ||--|{ EMBEDDINGS : "is split into"

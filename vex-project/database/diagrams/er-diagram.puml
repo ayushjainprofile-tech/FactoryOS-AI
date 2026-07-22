@@ -1,0 +1,82 @@
+@startuml FactoryOS_ERD
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor White
+    BorderColor #4F46E5
+    ArrowColor #6B7280
+}
+
+entity "organizations" as org {
+  * id : uuid <<PK>>
+  --
+  * name : varchar(255)
+  * slug : varchar(100) <<UK>>
+  plan_tier : varchar(50)
+  is_active : boolean
+  created_at : timestamp
+  deleted_at : timestamp
+}
+
+entity "users" as user {
+  * id : uuid <<PK>>
+  --
+  * organization_id : uuid <<FK>>
+  * email : varchar(255) <<UK>>
+  * first_name : varchar(100)
+  * role : varchar(50)
+  created_at : timestamp
+  deleted_at : timestamp
+}
+
+entity "auth_credentials" as auth {
+  * id : uuid <<PK>>
+  --
+  * user_id : uuid <<FK>> <<UK>>
+  * password_hash : varchar(255)
+}
+
+entity "assets" as asset {
+  * id : uuid <<PK>>
+  --
+  * organization_id : uuid <<FK>>
+  * asset_code : varchar(100)
+  * name : varchar(255)
+  health_score : decimal
+}
+
+entity "documents" as doc {
+  * id : uuid <<PK>>
+  --
+  * organization_id : uuid <<FK>>
+  asset_id : uuid <<FK>>
+  * title : varchar(255)
+  * document_type : varchar(100)
+}
+
+entity "embeddings" as emb {
+  * id : uuid <<PK>>
+  --
+  * document_id : uuid <<FK>>
+  * chunk_content : text
+  embedding : vector(1536)
+}
+
+entity "maintenance_records" as maint {
+  * id : uuid <<PK>>
+  --
+  * asset_id : uuid <<FK>>
+  * technician_id : uuid <<FK>>
+  * maintenance_type : varchar(100)
+  date : timestamp
+}
+
+org ||--o{ user
+org ||--o{ asset
+org ||--o{ doc
+user ||--|| auth
+asset ||--o{ doc
+doc ||--|{ emb
+asset ||--o{ maint
+user ||--o{ maint
+
+@enduml

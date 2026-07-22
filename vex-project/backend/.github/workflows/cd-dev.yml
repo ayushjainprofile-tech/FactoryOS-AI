@@ -1,0 +1,17 @@
+name: Continuous Deployment - Development
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy to Development Cloud
+        run: |
+          echo "Starting dev environment deployment..."
+          chmod +x scripts/deploy-dev.sh
+          ./scripts/deploy-dev.sh

@@ -1,0 +1,1 @@
+.background-enter{opacity:0}.background-enter-loaded{animation:background-enter 1.6s var(--ease-out-cubic) both}@keyframes background-enter{0%{opacity:0;transform:translateY(50vh)}to{opacity:var(--background-opacity,1);transform:translate(0,0)}}@media (prefers-reduced-motion:reduce){.background-enter-loaded{opacity:var(--background-opacity,1);animation:none;transform:none}}

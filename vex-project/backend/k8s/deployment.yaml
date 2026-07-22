@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vex-app-deployment
+  labels:
+    app: vex-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vex-app
+  template:
+    metadata:
+      labels:
+        app: vex-app
+    spec:
+      containers:
+        - name: vex-app
+          image: vexacr.azurecr.io/vex-app:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: ENV
+              value: "production"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vex-app-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8000
+      targetPort: 8000
+  selector:
+    app: vex-app

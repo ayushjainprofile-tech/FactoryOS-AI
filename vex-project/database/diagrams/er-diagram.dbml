@@ -1,0 +1,108 @@
+Project FactoryOS_AI {
+  database_type: 'PostgreSQL'
+  Note: 'Enterprise Industrial Knowledge Intelligence Platform'
+}
+
+Table organizations {
+  id uuid [pk, default: `uuid_generate_v4()`]
+  name varchar(255) [not null]
+  slug varchar(100) [not null, unique]
+  domain varchar(255)
+  plan_tier varchar(50) [default: 'ENTERPRISE']
+  settings jsonb [default: '{}']
+  is_active boolean [default: true]
+  created_at timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  deleted_at timestamp
+
+  Note: 'Core tenant table for multi-tenancy'
+}
+
+Table users {
+  id uuid [pk, default: `uuid_generate_v4()`]
+  organization_id uuid [ref: > organizations.id]
+  email varchar(255) [not null, unique]
+  first_name varchar(100) [not null]
+  last_name varchar(100) [not null]
+  role varchar(50) [not null, default: 'PLANT_ENGINEER']
+  is_active boolean [default: true]
+  created_at timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  deleted_at timestamp
+
+  Note: 'System users with RBAC'
+}
+
+Table auth_credentials {
+  id uuid [pk, default: `uuid_generate_v4()`]
+  user_id uuid [unique, ref: - users.id]
+  password_hash varchar(255) [not null]
+  password_algo varchar(50) [default: 'argon2id']
+  two_factor_enabled boolean [default: false]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+
+  Note: 'Salted password hashes'
+}
+
+Table assets {
+  id uuid [pk, default: `uuid_generate_v4()`]
+  organization_id uuid [ref: > organizations.id]
+  asset_code varchar(100) [not null]
+  name varchar(255) [not null]
+  category varchar(100) [not null]
+  health_score decimal [default: 100.0]
+  status varchar(50) [default: 'HEALTHY']
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+  updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+
+  Note: 'Industrial equipment (e.g. Pump-21)'
+}
+
+Table documents {
+  id uuid [pk, default: `uuid_generate_v4()`]
+  organization_id uuid [ref: > organizations.id]
+  asset_id uuid [ref: > assets.id]
+  title varchar(255) [not null]
+  document_type varchar(100) [not null]
+  storage_url text [not null]
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+
+  Note: 'PDFs, P&IDs, OEM Manuals'
+}
+
+Table embeddings {
+  id uuid [pk, default: `uuid_generate_v4()`]
+  organization_id uuid [ref: > organizations.id]
+  document_id uuid [ref: > documents.id]
+  chunk_index int [not null]
+  chunk_content text [not null]
+  embedding vector(1536)
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+
+  Note: 'pgvector representations of chunks'
+}
+
+Table maintenance_records {
+  id uuid [pk, default: `uuid_generate_v4()`]
+  asset_id uuid [ref: > assets.id]
+  technician_id uuid [ref: > users.id]
+  maintenance_type varchar(100) [not null]
+  findings text
+  cost decimal
+  date timestamp [not null]
+
+  Note: 'Historical maintenance logs'
+}
+
+Table audit_logs {
+  id uuid [pk, default: `uuid_generate_v4()`]
+  organization_id uuid [ref: > organizations.id]
+  user_id uuid [ref: > users.id]
+  action varchar(100) [not null]
+  resource_type varchar(100)
+  payload jsonb
+  created_at timestamp [default: `CURRENT_TIMESTAMP`]
+
+  Note: 'Immutable security audit trail'
+}

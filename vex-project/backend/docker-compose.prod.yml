@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    environment:
+      - ENV=production
+    restart: always
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: vex_worker
+    environment:
+      DATABASE_URL: postgres://postgres:postgres_password@postgres:5432/vex_db
+      REDIS_URL: redis://redis:6379/0
+    restart: always

@@ -1,0 +1,43 @@
+# Environment and Secrets
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.cert
+*.pfx
+
+# Node dependencies and build output
+node_modules/
+dist/
+dist-ssr/
+.output/
+.vinxi/
+.tanstack/
+.nitro/
+*.local
+
+# Python files and caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+.venv/
+venv/
+
+# Internal workspace and temp files
+.workspace/
+.lovable/
+.agents/
+.qodo/
+*.zip
+
+# OS and Editor files
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/

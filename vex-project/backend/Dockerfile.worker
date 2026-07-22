@@ -1,0 +1,29 @@
+# Celery Worker Dockerfile
+FROM python:3.10-slim AS builder
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir --user -r requirements.txt
+
+# Final stage
+FROM python:3.10-slim
+
+WORKDIR /app
+
+RUN groupadd -g 10001 appgroup && \
+    useradd -u 10001 -g appgroup -m -s /bin/bash appuser
+
+COPY --from=builder /root/.local /home/appuser/.local
+COPY . /app
+
+RUN chown -R appuser:appgroup /app
+
+USER appuser
+ENV PATH=/home/appuser/.local/bin:$PATH
+
+CMD ["celery", "-A", "src.workers.celery_app", "worker", "--loglevel=info"]

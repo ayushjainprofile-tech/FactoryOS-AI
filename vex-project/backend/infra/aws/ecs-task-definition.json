@@ -1,0 +1,23 @@
+{
+  "family": "vex-backend",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+      "name": "vex-app",
+      "image": "123456789012.dkr.ecr.us-east-1.amazonaws.com/vex-app:latest",
+      "cpu": 256,
+      "memory": 512,
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "hostPort": 8000
+        }
+      ]
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512"
+}

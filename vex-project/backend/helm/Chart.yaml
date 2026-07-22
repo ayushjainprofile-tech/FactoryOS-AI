@@ -1,0 +1,6 @@
+apiVersion: v2
+name: vex-helm-chart
+description: Helm chart wrapping Vex application services deployment
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

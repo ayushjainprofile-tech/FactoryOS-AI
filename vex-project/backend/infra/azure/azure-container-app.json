@@ -1,0 +1,22 @@
+{
+  "type": "Microsoft.App/containerApps",
+  "apiVersion": "2022-03-01",
+  "name": "vex-backend-app",
+  "location": "eastus",
+  "properties": {
+    "configuration": {
+      "ingress": {
+        "external": true,
+        "targetPort": 8000
+      }
+    },
+    "template": {
+      "containers": [
+        {
+          "image": "vexacr.azurecr.io/vex-app:latest",
+          "name": "vex-app-container"
+        }
+      ]
+    }
+  }
+}

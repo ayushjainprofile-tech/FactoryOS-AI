@@ -1,0 +1,1 @@
+.chat-scroll-container{container-type:size}.chat-scroll-container .active-turn{min-height:calc(100cqh - var(--chat-top-safe-padding,0px))}

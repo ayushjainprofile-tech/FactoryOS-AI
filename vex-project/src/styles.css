@@ -1,0 +1,332 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ═══════════════════════════════════════════════════
+   UNIFIED DESIGN SYSTEM — FactoryOS AI
+   One premium dark theme across all pages
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --radius: 0.75rem;
+  --fos-bg-base: #060910;
+  --fos-bg-raised: #0c1018;
+  --fos-bg-surface: #111827;
+  --fos-bg-overlay: #1a2232;
+  --fos-border: rgba(255,255,255,0.06);
+  --fos-border-hover: rgba(255,255,255,0.12);
+  --fos-accent: #06b6d4;
+  --fos-accent-glow: rgba(6,182,212,0.15);
+  --fos-text-primary: #f1f5f9;
+  --fos-text-secondary: #94a3b8;
+  --fos-text-muted: #64748b;
+
+  /* shadcn mapping */
+  --background: oklch(0.08 0.02 260);
+  --foreground: oklch(0.96 0.005 250);
+  --card: oklch(0.12 0.025 260);
+  --card-foreground: oklch(0.96 0.005 250);
+  --popover: oklch(0.12 0.025 260);
+  --popover-foreground: oklch(0.96 0.005 250);
+  --primary: oklch(0.75 0.15 195);
+  --primary-foreground: oklch(0.08 0.02 260);
+  --secondary: oklch(0.18 0.02 260);
+  --secondary-foreground: oklch(0.96 0.005 250);
+  --muted: oklch(0.18 0.02 260);
+  --muted-foreground: oklch(0.60 0.02 255);
+  --accent: oklch(0.18 0.02 260);
+  --accent-foreground: oklch(0.96 0.005 250);
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.96 0.005 250);
+  --border: oklch(1 0 0 / 6%);
+  --input: oklch(1 0 0 / 8%);
+  --ring: oklch(0.75 0.15 195);
+  --chart-1: oklch(0.75 0.15 195);
+  --chart-2: oklch(0.7 0.17 165);
+  --chart-3: oklch(0.65 0.2 25);
+  --chart-4: oklch(0.8 0.15 85);
+  --chart-5: oklch(0.65 0.2 280);
+  --sidebar: oklch(0.10 0.025 260);
+  --sidebar-foreground: oklch(0.96 0.005 250);
+  --sidebar-primary: oklch(0.75 0.15 195);
+  --sidebar-primary-foreground: oklch(0.96 0.005 250);
+  --sidebar-accent: oklch(0.18 0.02 260);
+  --sidebar-accent-foreground: oklch(0.96 0.005 250);
+  --sidebar-border: oklch(1 0 0 / 6%);
+  --sidebar-ring: oklch(0.75 0.15 195);
+}
+
+.dark {
+  --background: oklch(0.08 0.02 260);
+  --foreground: oklch(0.96 0.005 250);
+  --card: oklch(0.12 0.025 260);
+  --card-foreground: oklch(0.96 0.005 250);
+  --popover: oklch(0.12 0.025 260);
+  --popover-foreground: oklch(0.96 0.005 250);
+  --primary: oklch(0.75 0.15 195);
+  --primary-foreground: oklch(0.08 0.02 260);
+  --secondary: oklch(0.18 0.02 260);
+  --secondary-foreground: oklch(0.96 0.005 250);
+  --muted: oklch(0.18 0.02 260);
+  --muted-foreground: oklch(0.60 0.02 255);
+  --accent: oklch(0.18 0.02 260);
+  --accent-foreground: oklch(0.96 0.005 250);
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.96 0.005 250);
+  --border: oklch(1 0 0 / 6%);
+  --input: oklch(1 0 0 / 8%);
+  --ring: oklch(0.75 0.15 195);
+  --chart-1: oklch(0.75 0.15 195);
+  --chart-2: oklch(0.7 0.17 165);
+  --chart-3: oklch(0.65 0.2 25);
+  --chart-4: oklch(0.8 0.15 85);
+  --chart-5: oklch(0.65 0.2 280);
+  --sidebar: oklch(0.10 0.025 260);
+  --sidebar-foreground: oklch(0.96 0.005 250);
+  --sidebar-primary: oklch(0.75 0.15 195);
+  --sidebar-primary-foreground: oklch(0.96 0.005 250);
+  --sidebar-accent: oklch(0.18 0.02 260);
+  --sidebar-accent-foreground: oklch(0.96 0.005 250);
+  --sidebar-border: oklch(1 0 0 / 6%);
+  --sidebar-ring: oklch(0.75 0.15 195);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--fos-bg-base);
+    color: var(--fos-text-primary);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(6,182,212,0.3);
+    color: #fff;
+  }
+}
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════
+   LIQUID GLASS — Shared across all pages
+   ═══════════════════════════════════════════════════ */
+
+.liquid-glass {
+  background: rgba(12, 16, 24, 0.6);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 4px 24px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.12) 0%,
+    rgba(255,255,255,0.04) 30%,
+    rgba(255,255,255,0) 50%,
+    rgba(255,255,255,0.02) 80%,
+    rgba(255,255,255,0.08) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.liquid-glass-subtle {
+  background: rgba(12, 16, 24, 0.35);
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ═══════════════════════════════════════════════════
+   SHARED CARD SYSTEM
+   ═══════════════════════════════════════════════════ */
+
+.fos-card {
+  background: var(--fos-bg-surface);
+  border: 1px solid var(--fos-border);
+  border-radius: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fos-card:hover {
+  border-color: var(--fos-border-hover);
+  box-shadow: 0 0 40px var(--fos-accent-glow);
+}
+
+/* ═══════════════════════════════════════════════════
+   ANIMATION KEYFRAMES (shared)
+   ═══════════════════════════════════════════════════ */
+
+@keyframes float-glow {
+  0%, 100% { opacity: 0.4; transform: translateY(0px) scale(1); }
+  50% { opacity: 0.7; transform: translateY(-20px) scale(1.05); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-float-glow { animation: float-glow 6s ease-in-out infinite; }
+.animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
+.animate-slide-up { animation: slide-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.animate-slide-in-right { animation: slide-in-right 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.animate-fade-in { animation: fade-in 0.8s ease forwards; }
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 33%, rgba(255,255,255,0.05) 50%, transparent 66%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* ═══════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ═══════════════════════════════════════════════════
+   GRADIENT TEXT UTILITY
+   ═══════════════════════════════════════════════════ */
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-white {
+  background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════════
+   GLOW EFFECTS
+   ═══════════════════════════════════════════════════ */
+
+.glow-cyan {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.15), 0 0 60px rgba(6, 182, 212, 0.05);
+}
+
+.glow-accent-ring {
+  box-shadow: 0 0 0 1px rgba(6,182,212,0.3), 0 0 20px rgba(6,182,212,0.1);
+}
