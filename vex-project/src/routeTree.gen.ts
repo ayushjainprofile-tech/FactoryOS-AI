@@ -9,48 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as DashboardRouteImport } from './routes/dashboard'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as ChatRouteImport } from './routes/chat'
-import { Route as DocumentsRouteImport } from './routes/documents'
-import { Route as SearchRouteImport } from './routes/search'
-import { Route as GraphRouteImport } from './routes/graph'
-import { Route as TwinRouteImport } from './routes/twin'
-import { Route as AssetsRouteImport } from './routes/assets'
-import { Route as MaintenanceRouteImport } from './routes/maintenance'
-import { Route as ComplianceRouteImport } from './routes/compliance'
-import { Route as InvestigationsRouteImport } from './routes/investigations'
 import { Route as WorkflowsRouteImport } from './routes/workflows'
+import { Route as TwinRouteImport } from './routes/twin'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as MaintenanceRouteImport } from './routes/maintenance'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as InvestigationsRouteImport } from './routes/investigations'
+import { Route as GraphRouteImport } from './routes/graph'
+import { Route as DocumentsRouteImport } from './routes/documents'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ComplianceRouteImport } from './routes/compliance'
+import { Route as ChatRouteImport } from './routes/chat'
+import { Route as AssetsRouteImport } from './routes/assets'
 import { Route as IndexRouteImport } from './routes/index'
 
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChatRoute = ChatRouteImport.update({
-  id: '/chat',
-  path: '/chat',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DocumentsRoute = DocumentsRouteImport.update({
-  id: '/documents',
-  path: '/documents',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SearchRoute = SearchRouteImport.update({
-  id: '/search',
-  path: '/search',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GraphRoute = GraphRouteImport.update({
-  id: '/graph',
-  path: '/graph',
+const WorkflowsRoute = WorkflowsRouteImport.update({
+  id: '/workflows',
+  path: '/workflows',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TwinRoute = TwinRouteImport.update({
@@ -58,9 +33,9 @@ const TwinRoute = TwinRouteImport.update({
   path: '/twin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AssetsRoute = AssetsRouteImport.update({
-  id: '/assets',
-  path: '/assets',
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MaintenanceRoute = MaintenanceRouteImport.update({
@@ -68,9 +43,9 @@ const MaintenanceRoute = MaintenanceRouteImport.update({
   path: '/maintenance',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ComplianceRoute = ComplianceRouteImport.update({
-  id: '/compliance',
-  path: '/compliance',
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvestigationsRoute = InvestigationsRouteImport.update({
@@ -78,9 +53,34 @@ const InvestigationsRoute = InvestigationsRouteImport.update({
   path: '/investigations',
   getParentRoute: () => rootRouteImport,
 } as any)
-const WorkflowsRoute = WorkflowsRouteImport.update({
-  id: '/workflows',
-  path: '/workflows',
+const GraphRoute = GraphRouteImport.update({
+  id: '/graph',
+  path: '/graph',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComplianceRoute = ComplianceRouteImport.update({
+  id: '/compliance',
+  path: '/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssetsRoute = AssetsRouteImport.update({
+  id: '/assets',
+  path: '/assets',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -91,116 +91,121 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
-  '/login': typeof LoginRoute
-  '/chat': typeof ChatRoute
-  '/documents': typeof DocumentsRoute
-  '/search': typeof SearchRoute
-  '/graph': typeof GraphRoute
-  '/twin': typeof TwinRoute
   '/assets': typeof AssetsRoute
-  '/maintenance': typeof MaintenanceRoute
+  '/chat': typeof ChatRoute
   '/compliance': typeof ComplianceRoute
+  '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
+  '/graph': typeof GraphRoute
   '/investigations': typeof InvestigationsRoute
+  '/login': typeof LoginRoute
+  '/maintenance': typeof MaintenanceRoute
+  '/search': typeof SearchRoute
+  '/twin': typeof TwinRoute
   '/workflows': typeof WorkflowsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
-  '/login': typeof LoginRoute
-  '/chat': typeof ChatRoute
-  '/documents': typeof DocumentsRoute
-  '/search': typeof SearchRoute
-  '/graph': typeof GraphRoute
-  '/twin': typeof TwinRoute
   '/assets': typeof AssetsRoute
-  '/maintenance': typeof MaintenanceRoute
+  '/chat': typeof ChatRoute
   '/compliance': typeof ComplianceRoute
+  '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
+  '/graph': typeof GraphRoute
   '/investigations': typeof InvestigationsRoute
+  '/login': typeof LoginRoute
+  '/maintenance': typeof MaintenanceRoute
+  '/search': typeof SearchRoute
+  '/twin': typeof TwinRoute
   '/workflows': typeof WorkflowsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
-  '/login': typeof LoginRoute
-  '/chat': typeof ChatRoute
-  '/documents': typeof DocumentsRoute
-  '/search': typeof SearchRoute
-  '/graph': typeof GraphRoute
-  '/twin': typeof TwinRoute
   '/assets': typeof AssetsRoute
-  '/maintenance': typeof MaintenanceRoute
+  '/chat': typeof ChatRoute
   '/compliance': typeof ComplianceRoute
+  '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
+  '/graph': typeof GraphRoute
   '/investigations': typeof InvestigationsRoute
+  '/login': typeof LoginRoute
+  '/maintenance': typeof MaintenanceRoute
+  '/search': typeof SearchRoute
+  '/twin': typeof TwinRoute
   '/workflows': typeof WorkflowsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/login' | '/chat' | '/documents' | '/search' | '/graph' | '/twin' | '/assets' | '/maintenance' | '/compliance' | '/investigations' | '/workflows'
+  fullPaths:
+    | '/'
+    | '/assets'
+    | '/chat'
+    | '/compliance'
+    | '/dashboard'
+    | '/documents'
+    | '/graph'
+    | '/investigations'
+    | '/login'
+    | '/maintenance'
+    | '/search'
+    | '/twin'
+    | '/workflows'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/login' | '/chat' | '/documents' | '/search' | '/graph' | '/twin' | '/assets' | '/maintenance' | '/compliance' | '/investigations' | '/workflows'
-  id: '__root__' | '/' | '/dashboard' | '/login' | '/chat' | '/documents' | '/search' | '/graph' | '/twin' | '/assets' | '/maintenance' | '/compliance' | '/investigations' | '/workflows'
+  to:
+    | '/'
+    | '/assets'
+    | '/chat'
+    | '/compliance'
+    | '/dashboard'
+    | '/documents'
+    | '/graph'
+    | '/investigations'
+    | '/login'
+    | '/maintenance'
+    | '/search'
+    | '/twin'
+    | '/workflows'
+  id:
+    | '__root__'
+    | '/'
+    | '/assets'
+    | '/chat'
+    | '/compliance'
+    | '/dashboard'
+    | '/documents'
+    | '/graph'
+    | '/investigations'
+    | '/login'
+    | '/maintenance'
+    | '/search'
+    | '/twin'
+    | '/workflows'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DashboardRoute: typeof DashboardRoute
-  LoginRoute: typeof LoginRoute
-  ChatRoute: typeof ChatRoute
-  DocumentsRoute: typeof DocumentsRoute
-  SearchRoute: typeof SearchRoute
-  GraphRoute: typeof GraphRoute
-  TwinRoute: typeof TwinRoute
   AssetsRoute: typeof AssetsRoute
-  MaintenanceRoute: typeof MaintenanceRoute
+  ChatRoute: typeof ChatRoute
   ComplianceRoute: typeof ComplianceRoute
+  DashboardRoute: typeof DashboardRoute
+  DocumentsRoute: typeof DocumentsRoute
+  GraphRoute: typeof GraphRoute
   InvestigationsRoute: typeof InvestigationsRoute
+  LoginRoute: typeof LoginRoute
+  MaintenanceRoute: typeof MaintenanceRoute
+  SearchRoute: typeof SearchRoute
+  TwinRoute: typeof TwinRoute
   WorkflowsRoute: typeof WorkflowsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chat': {
-      id: '/chat'
-      path: '/chat'
-      fullPath: '/chat'
-      preLoaderRoute: typeof ChatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/documents': {
-      id: '/documents'
-      path: '/documents'
-      fullPath: '/documents'
-      preLoaderRoute: typeof DocumentsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/search': {
-      id: '/search'
-      path: '/search'
-      fullPath: '/search'
-      preLoaderRoute: typeof SearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/graph': {
-      id: '/graph'
-      path: '/graph'
-      fullPath: '/graph'
-      preLoaderRoute: typeof GraphRouteImport
+    '/workflows': {
+      id: '/workflows'
+      path: '/workflows'
+      fullPath: '/workflows'
+      preLoaderRoute: typeof WorkflowsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/twin': {
@@ -210,11 +215,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TwinRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/assets': {
-      id: '/assets'
-      path: '/assets'
-      fullPath: '/assets'
-      preLoaderRoute: typeof AssetsRouteImport
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/maintenance': {
@@ -224,11 +229,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MaintenanceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/compliance': {
-      id: '/compliance'
-      path: '/compliance'
-      fullPath: '/compliance'
-      preLoaderRoute: typeof ComplianceRouteImport
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/investigations': {
@@ -238,11 +243,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InvestigationsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/workflows': {
-      id: '/workflows'
-      path: '/workflows'
-      fullPath: '/workflows'
-      preLoaderRoute: typeof WorkflowsRouteImport
+    '/graph': {
+      id: '/graph'
+      path: '/graph'
+      fullPath: '/graph'
+      preLoaderRoute: typeof GraphRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compliance': {
+      id: '/compliance'
+      path: '/compliance'
+      fullPath: '/compliance'
+      preLoaderRoute: typeof ComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assets': {
+      id: '/assets'
+      path: '/assets'
+      fullPath: '/assets'
+      preLoaderRoute: typeof AssetsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -257,17 +297,17 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DashboardRoute: DashboardRoute,
-  LoginRoute: LoginRoute,
-  ChatRoute: ChatRoute,
-  DocumentsRoute: DocumentsRoute,
-  SearchRoute: SearchRoute,
-  GraphRoute: GraphRoute,
-  TwinRoute: TwinRoute,
   AssetsRoute: AssetsRoute,
-  MaintenanceRoute: MaintenanceRoute,
+  ChatRoute: ChatRoute,
   ComplianceRoute: ComplianceRoute,
+  DashboardRoute: DashboardRoute,
+  DocumentsRoute: DocumentsRoute,
+  GraphRoute: GraphRoute,
   InvestigationsRoute: InvestigationsRoute,
+  LoginRoute: LoginRoute,
+  MaintenanceRoute: MaintenanceRoute,
+  SearchRoute: SearchRoute,
+  TwinRoute: TwinRoute,
   WorkflowsRoute: WorkflowsRoute,
 }
 export const routeTree = rootRouteImport

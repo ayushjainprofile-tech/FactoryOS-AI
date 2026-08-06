@@ -33,7 +33,7 @@ export const LoginPage: React.FC = () => {
 
         <div className="w-full max-w-md relative z-10">
           <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-[24px] p-8 shadow-2xl">
-            <div className="flex flex-col items-center mb-8">
+            <div className="flex flex-col items-center mb-6">
               <div className="h-12 w-12 rounded-2xl bg-gradient-to-tr from-[#4F46E5] to-[#6366F1] flex items-center justify-center shadow-lg shadow-indigo-500/20 mb-4">
                 <Sparkles className="h-6 w-6 text-white" />
               </div>
@@ -41,6 +41,16 @@ export const LoginPage: React.FC = () => {
               <p className="text-sm text-slate-400 mt-1.5 text-center">
                 Sign in to manage industrial intelligence pipelines.
               </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setEmail("admin@factoryos.ai");
+                  setPassword("AdminPass123!");
+                }}
+                className="mt-3 text-xs bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-3 py-1.5 rounded-lg transition-all"
+              >
+                ⚡ Click to autofill Demo Admin Login
+              </button>
             </div>
 
             {error && (

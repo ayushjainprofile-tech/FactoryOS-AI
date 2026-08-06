@@ -1,0 +1,8 @@
+{
+  "client": {
+    "source": ".output/public"
+  },
+  "app_sail": {
+    "source": "backend"
+  }
+}
